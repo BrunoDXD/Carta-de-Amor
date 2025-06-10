@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para o Amor da Minha Vida</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #121212;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-image: linear-gradient(to bottom right, #121212, #1e1e1e);
+            color: #e0e0e0;
+        }
+
+        .card {
+            background-color: #1e1e1e;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            width: 80%;
+            max-width: 600px;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #333;
+        }
+
+        .heart {
+            position: relative;
+            width: 20px;
+            height: 20px;
+            background-color: #c2185b;
+            transform: rotate(45deg);
+            animation: float 4s ease-in-out infinite;
+            opacity: 0.3;
+        }
+
+        .heart:before,
+        .heart:after {
+            content: '';
+            width: 100%;
+            height: 100%;
+            background-color: #c2185b;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .heart:before {
+            top: -50%;
+            left: 0;
+        }
+
+        .heart:after {
+            top: 0;
+            left: -50%;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(45deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(45deg);
+            }
+        }
+
+        h1 {
+            color: #f48fb1;
+            margin-bottom: 20px;
+            font-size: 2.5em;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        p {
+            color: #e0e0e0;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .signature {
+            font-style: italic;
+            margin-top: 30px;
+            color: #f48fb1;
+            font-weight: bold;
+        }
+
+        .photo-space {
+            width: 300px;
+            height: 300px;
+            margin: 20px auto;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .photo-space img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .counter {
+            margin: 25px 0;
+            padding: 20px;
+            background-color: #2a2a2a;
+            border-radius: 15px;
+            color: #e0e0e0;
+            border: 1px solid #333;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .love-intro {
+            display: block;
+            font-size: 1.2em;
+            margin-bottom: 12px;
+            font-style: italic;
+            color: #f8bbd0;
+        }
+
+        .time-units {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 10px 0;
+        }
+
+        .time-value {
+            font-size: 2em;
+            font-weight: bold;
+            background: linear-gradient(45deg, #c2185b, #f48fb1);
+            color: white;
+            border-radius: 8px;
+            padding: 5px 15px;
+            display: inline-block;
+            min-width: 40px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .time-label {
+            display: block;
+            font-size: 0.9em;
+            margin-top: 5px;
+            color: #f8bbd0;
+        }
+
+        .time-small {
+            font-size: 0.9em;
+            margin: 10px 0;
+            opacity: 0.7;
+            color: #f48fb1;
+        }
+
+        .love-outro {
+            display: block;
+            font-style: italic;
+            margin-top: 10px;
+            color: #f8bbd0;
+        }
+
+        .btn {
+            background-color: #c2185b;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn:hover {
+            background-color: #e91e63;
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .hidden-message {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #2a2a2a;
+            border-radius: 10px;
+            border: 1px solid #333;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .music-player {
+            margin: 20px auto;
+            max-width: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        audio {
+            width: 100%;
+            border-radius: 30px;
+            outline: none;
+        }
+
+        audio::-webkit-media-controls-panel {
+            background-color: #2a2a2a;
+        }
+
+        audio::-webkit-media-controls-play-button {
+            background-color: #c2185b;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Corações flutuantes -->
+    <div style="position: absolute; width: 20px; height: 20px; top: 10%; left: 10%;">
+        <div class="heart"></div>
+    </div>
+    <div style="position: absolute; width: 20px; height: 20px; top: 20%; left: 80%;">
+        <div class="heart"></div>
+    </div>
+    <div style="position: absolute; width: 20px; height: 20px; top: 70%; left: 20%;">
+        <div class="heart"></div>
+    </div>
+    <div style="position: absolute; width: 20px; height: 20px; top: 60%; left: 70%;">
+        <div class="heart"></div>
+    </div>
+    <div style="position: absolute; width: 20px; height: 20px; top: 40%; left: 40%;">
+        <div class="heart"></div>
+    </div>
+
+    <div class="card">
+        <h1>Feliz Dia dos Namorados!</h1>
+
+        <p>Para a pessoa mais especial do mundo,</p>
+
+        <p>Cada momento ao seu lado é um presente que guardo com carinho no meu coração.
+            Seu sorriso ilumina meus dias, e seu amor me faz querer ser uma pessoa melhor a cada amanhecer.</p>
+
+        <p>Não consigo imaginar minha vida sem você. Você é meu amor, minha melhor amiga,
+            minha confidente e minha companheira em todas as aventuras e desafios.</p>
+
+        <div class="photo-space">
+            <img src="img/eueela.jpeg" alt="Nossa foto especial">
+        </div>
+
+        <div class="counter" id="love-counter">
+            <span class="love-intro">Meu coração bate por você há</span>
+            <div class="time-units">
+                <span class="time-value"><span id="years">0</span></span>
+                <span class="time-label">anos</span>
+                <span class="time-value"><span id="months">0</span></span>
+                <span class="time-label">meses</span>
+                <span class="time-value"><span id="days">0</span></span>
+                <span class="time-label">dias</span>
+            </div>
+            <div class="time-small">
+                <span id="hours">0</span> horas e <span id="seconds">0</span> segundos
+            </div>
+            <span class="love-outro">e continua a cada batida...</span>
+        </div>
+
+
+        <p>Obrigado por ser exatamente quem você é e por me amar do jeito que sou.</p>
+
+        <button class="btn" onclick="showMessage()">Clique para uma surpresa</button>
+
+        <div id="hidden-message" class="hidden-message">
+            <p>Você é o amor da minha vida e quero passar todos os meus dias fazendo você feliz.
+                Cada batida do meu coração tem seu nome, e cada sonho que tenho inclui você.</p>
+            <p>
+                Por mais que hoje estamos casados e parece que estamos presos em uma rotina, eu amo
+                minha rotina com você.
+            </p>
+            <p>Obrigado por sempre me aturar em todos estes anos, sei que não sou o namorado ou
+                marido perfeito, mas você me faz querer ser melhor a cada dia.
+            </p>
+            <p>Te amo mais do que palavras podem expressar! ❤️</p>
+            <p>Espero que tenha gostado deste presente, fiz com muito carinho❤️</p>
+
+            <p>PS: To viciado nessa música🙃</p>
+
+            <div class="music-player">
+                <audio id="love-song" controls>
+                    <source src="msc/O Meu Sangue Ferve Por Você Sidney Magal Neto.mp3" type="audio/mpeg">
+                    Seu navegador não suporta o elemento de áudio.
+                </audio>
+            </div>
+        </div>
+
+        <p class="signature">Com todo meu amor,<br>Seu amor</p>
+    </div>
+
+    <script>
+
+
+        // Criar mais corações aleatoriamente
+        function createHearts() {
+            const body = document.querySelector('body');
+            const numberOfHearts = 15;
+
+            for (let i = 0; i < numberOfHearts; i++) {
+                // Usar um container para manter a proporção correta
+                const heartContainer = document.createElement('div');
+                heartContainer.style.position = 'absolute';
+                
+                // Posição aleatória
+                const left = Math.random() * 100;
+                const top = Math.random() * 100;
+                heartContainer.style.left = `${left}%`;
+                heartContainer.style.top = `${top}%`;
+                
+                // Tamanho aleatório (entre 10px e 25px)
+                const size = Math.random() * 15 + 10;
+                heartContainer.style.width = `${size}px`;
+                heartContainer.style.height = `${size}px`;
+                
+                // Criar o coração dentro do container
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.style.width = '100%';
+                heart.style.height = '100%';
+                
+                // Velocidade de animação aleatória
+                const duration = Math.random() * 5 + 3;
+                heart.style.animationDuration = `${duration}s`;
+                
+                // Adicionar o coração ao container e o container ao body
+                heartContainer.appendChild(heart);
+                body.appendChild(heartContainer);
+            }
+        }
+
+        // Contador de tempo desde 22/10/2020
+        function updateCounter() {
+            const startDate = new Date('2020-10-22T00:00:00');
+            const currentDate = new Date();
+            const diff = currentDate - startDate;
+
+            const seconds = Math.floor(diff / 1000) % 60;
+            const minutes = Math.floor(diff / (1000 * 60)) % 60;
+            const hours = Math.floor(diff / (1000 * 60 * 60)) % 24;
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24)) % 30;
+
+            // Cálculo aproximado de meses e anos
+            let months = (currentDate.getFullYear() - startDate.getFullYear()) * 12;
+            months += currentDate.getMonth() - startDate.getMonth();
+
+            if (currentDate.getDate() < startDate.getDate()) {
+                months--;
+            }
+
+            const years = Math.floor(months / 12);
+            const remainingMonths = months % 12;
+
+            document.getElementById('years').textContent = years;
+            document.getElementById('months').textContent = remainingMonths;
+            document.getElementById('days').textContent = days;
+            document.getElementById('hours').textContent = hours;
+            document.getElementById('seconds').textContent = seconds;
+
+            setTimeout(updateCounter, 1000);
+        }
+
+        // Função para mostrar a mensagem oculta e iniciar a música
+        function showMessage() {
+            document.getElementById('hidden-message').style.display = 'block';
+
+            // Tenta iniciar a música quando a surpresa é revelada
+            const audioPlayer = document.getElementById('love-song');
+            audioPlayer.play().catch(e => {
+                console.log('Reprodução automática bloqueada pelo navegador');
+            });
+        }
+
+        window.onload = function () {
+            createHearts();
+            updateCounter();
+        };
+    </script>
+</body>
+
+</html>
